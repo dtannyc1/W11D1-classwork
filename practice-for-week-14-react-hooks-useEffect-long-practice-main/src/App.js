@@ -19,20 +19,20 @@ function App() {
     // console.log('Color Change :: light brown?', isLightBrown);
     // console.log('Color Change :: yellow?', isYellow);
     const colors = [];
-    if (isRed){
-        colors.push("red");
+    if (isRed) {
+      colors.push("red");
     }
-    if (isOrange){
-        colors.push("orange");
+    if (isOrange) {
+      colors.push("orange");
     }
-    if (isBrown){
-        colors.push("brown");
+    if (isBrown) {
+      colors.push("brown");
     }
-    if (isLightBrown){
-        colors.push("light-brown");
+    if (isLightBrown) {
+      colors.push("light-brown");
     }
-    if (isYellow){
-        colors.push("yellow");
+    if (isYellow) {
+      colors.push("yellow");
     }
     setFeatherColors(colors);
   }, [isRed, isOrange, isBrown, isLightBrown, isYellow]);
@@ -91,7 +91,7 @@ function App() {
         featherCount={featherCount}
         featherColors={featherColors}
       />
-      <Message size={size} />
+      <Message size={size} featherCount={featherCount} />
     </>
   );
 }
