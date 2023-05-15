@@ -64,51 +64,64 @@ function Form(props) {
         }
     }
 
-    const handleSubmit = () => {
-        const submittedData = { name, email, phoneNumber, phoneType, staff, bio, signedUp };
-        console.log(submittedData);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        let errors = validate();
+        if (errors.length > 0) {
+            setErrorMessages(errors);
+        } else {
+            const submittedData = { name, email, phoneNumber, phoneType, staff, bio, signedUp };
+            console.log(submittedData);
+        }
+
+    }
+
+    const showErrors = () => {
+        if (errorMessages.length === 0) return null;
+        console.log(errorMessages);
+        return (
+            <ul>
+                {errorMessages.map((error, i) => { <li key={i}>{error}</li> })}
+            </ul>
+        )
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Name" value={name} onChange={handleChange("name")} />
-            <br />
-
-            <input type="text" placeholder="Email" value={email} onChange={handleChange("email")} />
-            <br />
-
-            <input type="text" placeholder="Phone Number" value={phoneNumber} onChange={handleChange("phoneNumber")} />
-            <br />
-
-            <select value={phoneType} onChange={handleChange("phoneType")}>
-                <option disabled>Phone Number</option>
-                <option value="Home">Home</option>
-                <option value="Work">Work</option>
-                <option value="Mobile">Mobile</option>
-            </select>
-            <br />
-
-            <label>
-                <input type="radio" value="instructor" checked={staff === "instructor"} onChange={handleChange("staff")} />Instructor
-            </label>
-            <label>
-                <input type="radio" value="student" checked={staff === "student"} onChange={handleChange("staff")} />Student
-            </label>
-            <br />
-
-            <label>Bio:
-                <textarea placeholder="Bio" value={bio} onChange={handleChange("bio")} />
-            </label>
-            <br />
-
-            <label>Sign up for Email Notifications?
-                <input type="checkbox" value={signedUp} checked={signedUp} onChange={handleChange("signedUp")} />
-            </label>
-
-            <br />
-
-            <button>Submit</button>
-        </form>
+        <div>
+            {showErrors()}
+            <form onSubmit={handleSubmit}>
+                <input type="text" placeholder="Name" value={name} onChange={handleChange("name")} />
+                <br />
+                <input type="text" placeholder="Email" value={email} onChange={handleChange("email")} />
+                <br />
+                <input type="text" placeholder="Phone Number" value={phoneNumber} onChange={handleChange("phoneNumber")} />
+                <br />
+                <select value={phoneType} onChange={handleChange("phoneType")}>
+                    <option disabled value="">Phone Type</option>
+                    <option value="Home">Home</option>
+                    <option value="Work">Work</option>
+                    <option value="Mobile">Mobile</option>
+                </select>
+                <br />
+                <label>
+                    <input type="radio" value="instructor" checked={staff === "instructor"} onChange={handleChange("staff")} />Instructor
+                </label>
+                <label>
+                    <input type="radio" value="student" checked={staff === "student"} onChange={handleChange("staff")} />Student
+                </label>
+                <br />
+                <label>Bio:
+                    <textarea placeholder="Bio" value={bio} onChange={handleChange("bio")} />
+                </label>
+                <br />
+                <label>Sign up for Email Notifications?
+                    <input type="checkbox" value={signedUp} checked={signedUp} onChange={handleChange("signedUp")} />
+                </label>
+                <br />
+                <button>Submit</button>
+            </form>
+        </div>
     )
 };
 
