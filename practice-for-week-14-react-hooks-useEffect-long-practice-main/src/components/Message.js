@@ -27,7 +27,7 @@ function Message({ size, featherCount }) {
   useEffect(() => {
     let message = '';
     switch (featherCount) {
-      case 0:
+      case "0":
         message = "Oh my! Your bird is naked";
         break;
       default:
@@ -39,7 +39,7 @@ function Message({ size, featherCount }) {
 
   return (
     <div className={`message ${sizeClass}`}>
-      {`${messageString}`}
+      {messageString}
     </div>
   );
 };

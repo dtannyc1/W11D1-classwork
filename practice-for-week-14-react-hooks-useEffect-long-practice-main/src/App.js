@@ -4,7 +4,7 @@ import PictureDisplay from "./components/PictureDisplay";
 
 function App() {
   const [size, setSize] = useState('s');
-  const [featherCount, setFeatherCount] = useState(0);
+  const [featherCount, setFeatherCount] = useState("0");
   const [featherColors, setFeatherColors] = useState([]);
   const [isRed, setIsRed] = useState(false);
   const [isOrange, setIsOrange] = useState(false);
