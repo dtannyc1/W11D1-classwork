@@ -81,7 +81,7 @@ function Form(props) {
         if (errorMessages.length === 0) return null;
         console.log(errorMessages);
         return (
-            <ul>
+            <ul className="errors">
                 {errorMessages.map((error, i) => {
                     return <li key={i}>{error}</li>
                 })}
@@ -91,7 +91,6 @@ function Form(props) {
 
     return (
         <div>
-            {showErrors()}
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Name" value={name} onChange={handleChange("name")} />
                 <br />
@@ -123,6 +122,7 @@ function Form(props) {
                 <br />
                 <button>Submit</button>
             </form>
+            {showErrors()}
         </div>
     )
 };
