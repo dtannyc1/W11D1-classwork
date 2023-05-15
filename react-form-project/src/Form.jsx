@@ -82,7 +82,9 @@ function Form(props) {
         console.log(errorMessages);
         return (
             <ul>
-                {errorMessages.map((error, i) => { <li key={i}>{error}</li> })}
+                {errorMessages.map((error, i) => {
+                    return <li key={i}>{error}</li>
+                })}
             </ul>
         )
     }
